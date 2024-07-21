@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.shabeen07.kotlin_shop.ui.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_orderViewFragment"
+            app:destination="@id/orderViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.shabeen07.kotlin_shop.ui.ItemDetailFragment"
+        android:label="Item Detail"
+        tools:layout="@layout/fragment_item_detail" >
+        <action
+            android:id="@+id/action_itemDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderViewFragment"
+        android:name="com.shabeen07.kotlin_shop.ui.OrderViewFragment"
+        android:label="fragment_order_view"
+        tools:layout="@layout/fragment_order_view" >
+        <action
+            android:id="@+id/action_orderViewFragment_to_shopFragment"
+            app:destination="@id/homeNavGraph" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.shabeen07.kotlin_shop.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_shopFragment"
+            app:destination="@id/homeNavGraph" />
+    </fragment>
+    <navigation
+        android:id="@+id/homeNavGraph"
+        android:label="Home"
+        app:startDestination="@id/shopFragment">
+        <fragment
+            android:id="@+id/shopFragment"
+            android:name="com.shabeen07.kotlin_shop.ui.ShopFragment"
+            android:label="SHOP"
+            tools:layout="@layout/fragment_shop">
+            <action
+                android:id="@+id/action_shopFragment_to_cartFragment"
+                app:destination="@id/cartFragment" />
+            <action
+                android:id="@+id/action_shopFragment_to_itemDetailFragment"
+                app:destination="@id/itemDetailFragment" />
+        </fragment>
+    </navigation>
+</navigation>
